@@ -68,41 +68,41 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-6">
+    <main className="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 p-4 sm:p-6">
       <div className="max-w-5xl mx-auto space-y-10">
-        <h1 className="text-5xl font-bold text-center text-gray-800 tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-bold text-center text-gray-100 tracking-tight">
           🚀 Upgrade Tracker
         </h1>
 
-        {/* New Project Input */}
-        <div className="flex flex-col sm:flex-row gap-3 items-center sm:items-start">
+        {/* Add New Project */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
           <Input
             value={newProject}
             onChange={(e) => setNewProject(e.target.value)}
             placeholder="Enter new project name"
-            className="shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+            className="text-white  w-sm shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           <Button
             onClick={addProject}
-            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700"
+            className="w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md shadow transition"
           >
             Add Project
           </Button>
         </div>
 
         {/* Project Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, projIdx) => (
             <Card
               key={projIdx}
               className="p-5 bg-white shadow-lg rounded-2xl border border-gray-200"
             >
-              <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4 border-b pb-2">
                 {project.name}
               </h2>
 
-              {/* Upgrade Input */}
-              <div className="flex gap-2 mb-4">
+              {/* Add Upgrade */}
+              <div className="flex flex-col sm:flex-row gap-2 mb-4">
                 <Input
                   value={project.newUpgrade}
                   onChange={(e) => {
@@ -111,9 +111,14 @@ export default function Home() {
                     setProjects(updated);
                   }}
                   placeholder="New upgrade..."
-                  className="focus:ring-blue-500 focus:border-blue-500 text-black"
+                  className="text-black w-full focus:ring-blue-500 focus:border-blue-500"
                 />
-                <Button onClick={() => addUpgrade(projIdx)}>Add</Button>
+                <Button
+                  onClick={() => addUpgrade(projIdx)}
+                  className="w-full sm:w-auto"
+                >
+                  Add
+                </Button>
               </div>
 
               {/* Upgrade List */}
